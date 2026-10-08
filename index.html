@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여에스더 식단 돼지고기 레시피 🥩</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FDFAF8;
+    --warm-white: #FDF6F0;
+    --main: #B5451B;
+    --main-deep: #8C3214;
+    --main-light: #FAEEE8;
+    --accent: #D4622E;
+    --text: #1A1A1A;
+    --text-mid: #555;
+    --text-light: #888;
+    --border: #EDDDD4;
+  }
+
+  body {
+    background: var(--cream);
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  .coupang-bar {
+    background: var(--cream);
+    text-align: center;
+    padding: 7px 16px;
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #B5451B, #D4622E);
+    padding: 16px 24px 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -22px; left: 50%;
+    transform: translateX(-50%);
+    width: 120%; height: 36px;
+    background: var(--cream);
+    border-radius: 50% 50% 0 0;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.35;
+    letter-spacing: -0.5px;
+  }
+  .hero-sub {
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+
+  /* BADGE */
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 24px 0;
+  }
+  .badge {
+    background: var(--main-light);
+    color: var(--main);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 20px 24px 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  /* INGREDIENTS */
+  .ingredient-group {
+    background: var(--warm-white);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+  }
+  .ingredient-group-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  .ingredient-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+  }
+  .ingredient-row:last-child { border-bottom: none; }
+  .ingredient-name { font-weight: 500; }
+  .ingredient-amount {
+    font-weight: 700;
+    color: var(--main);
+    font-size: 14px;
+  }
+
+  /* RATIO BOX */
+  .ratio-box {
+    background: var(--warm-white);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+  }
+  .ratio-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .ratio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .ratio-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+  }
+  .ratio-item.key {
+    background: var(--main-light);
+    border: 2px solid var(--main);
+  }
+  .ratio-item.full {
+    grid-column: 1 / -1;
+  }
+  .ratio-name {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 4px;
+  }
+  .ratio-amount {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--text);
+    font-family: 'Gaegu', sans-serif;
+  }
+  .ratio-item.key .ratio-name { color: var(--main); font-weight: 700; }
+  .ratio-item.key .ratio-amount { color: var(--main-deep); }
+
+  /* KEY INGREDIENT */
+  .secret-box {
+    background: linear-gradient(135deg, #FAEEE8, #F2D8C8);
+    border: 2px dashed var(--main);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .key-name {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Gaegu', sans-serif;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .key-amount {
+    font-size: 14px;
+    color: var(--text-mid);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .key-btn {
+    display: inline-block;
+    background: var(--main);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Pretendard', sans-serif;
+    transition: background 0.2s;
+  }
+  .key-btn:hover { background: var(--main-deep); }
+
+  /* STEPS */
+  .steps { padding: 20px 24px 0; max-width: 480px; margin: 0 auto; }
+  .step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--main);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+  }
+  .step-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .step-text strong { font-weight: 700; }
+
+  /* POINTS BOX */
+  .points-box {
+    max-width: 480px;
+    margin: 20px auto 0;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  .points-box-inner {
+    background: var(--main-light);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #DDBBAA;
+  }
+  .points-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--main);
+    margin-bottom: 14px;
+  }
+  .point-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 7px;
+    font-size: 15px;
+    line-height: 1.35;
+    color: var(--text);
+  }
+  .point-item:last-child { margin-bottom: 0; }
+
+  /* SHARE */
+  .share-wrap {
+    max-width: 480px;
+    margin: 20px auto 32px;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  .share-section {
+    background: var(--main);
+    border-radius: 16px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .share-title {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .share-copy-btn {
+    background: #fff;
+    color: var(--main-deep);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Pretendard', sans-serif;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .share-copy-btn:hover { opacity: 0.85; }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 999px;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 200;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- 쿠팡 파트너스 -->
+<div class="coupang-bar">
+  쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🥩 여에스더 식단 레시피</h1>
+  <p class="hero-sub">잡내 없이 · 바삭하고 · 담백하게</p>
+</div>
+
+<!-- BADGES -->
+<div class="badge-row">
+  <span class="badge">🥩 돼지고기등심</span>
+  <span class="badge">⚡ 15분완성</span>
+  <span class="badge">🔥 에어프라이어</span>
+</div>
+
+<!-- INGREDIENTS -->
+<div class="section">
+  <p class="section-title">🛒 재료</p>
+
+  <div class="ingredient-group">
+    <p class="ingredient-group-title">기본 재료</p>
+    <div class="ingredient-row">
+      <span class="ingredient-name">🥩 돼지고기 등심</span>
+      <span class="ingredient-amount">적당량</span>
+    </div>
+    <div class="ingredient-row">
+      <span class="ingredient-name">🧅 다진 대파</span>
+      <span class="ingredient-amount">적당량</span>
+    </div>
+    <div class="ingredient-row">
+      <span class="ingredient-name">🥚 계란</span>
+      <span class="ingredient-amount">1개</span>
+    </div>
+    <div class="ingredient-row">
+      <span class="ingredient-name">🌾 감자전분</span>
+      <span class="ingredient-amount">1.5큰술</span>
+    </div>
+  </div>
+
+  <!-- KEY INGREDIENT -->
+  <div class="secret-box">
+    <p class="key-name">✨ 핵심재료</p>
+    <p class="key-amount">잡내 제거 · 담백한 풍미의 핵심</p>
+    <a class="key-btn" href="https://influencers.coupang.com/s/morefancy_#:~:text=656" target="_blank" rel="noopener">핵심재료 확인하기 👈 클릭</a>
+  </div>
+
+  <!-- RATIO BOX -->
+  <div class="ratio-box">
+    <p class="ratio-title">🥣 황금비율 밑간</p>
+    <div class="ratio-grid">
+      <div class="ratio-item key">
+        <div class="ratio-name">✨ 핵심재료</div>
+        <div class="ratio-amount">1작은술</div>
+      </div>
+      <div class="ratio-item">
+        <div class="ratio-name">맛술</div>
+        <div class="ratio-amount">1큰술</div>
+      </div>
+      <div class="ratio-item full">
+        <div class="ratio-name">소금 · 후추</div>
+        <div class="ratio-amount">약간</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- STEPS -->
+<div class="steps">
+  <p class="section-title">👨🏻‍🍳 만드는 방법</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text">
+      길게 자른 돼지고기에 다진대파와 <strong><a href="https://influencers.coupang.com/s/morefancy_#:~:text=656" target="_blank" rel="noopener" style="color:var(--main);text-decoration:underline;">✨핵심재료</a></strong>를 포함한 <strong>황금비율 밑간을 넣고 버무려 10분 재워주세요</strong>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text">
+      밑간한 고기에 <strong>계란과 감자전분을 버무려주세요</strong>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text">
+      에어프라이어에 펼쳐 넣고 <strong>180도에 10분 구워주세요</strong>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-text">
+      뒤집어 <strong>5~7분 더 구워주면 완성!</strong> 🥩
+    </div>
+  </div>
+
+</div>
+
+<!-- POINTS -->
+<div class="points-box">
+  <div class="points-box-inner">
+    <p class="points-title">✅ 핵심재료 포인트</p>
+    <div class="point-item">
+      <span>🐷</span>
+      <span>돼지고기 <strong>잡내를 싹 없애줘요</strong></span>
+    </div>
+    <div class="point-item">
+      <span>😋</span>
+      <span><strong>담백하고 고소한 풍미</strong>가 올라가요</span>
+    </div>
+    <div class="point-item">
+      <span>🍪</span>
+      <span>에어프라이어로 <strong>바삭한 식감</strong>까지 UP!</span>
+    </div>
+  </div>
+</div>
+
+<!-- SHARE -->
+<div class="share-wrap">
+  <div class="share-section">
+    <p class="share-title">🔗 이 레시피 공유하기</p>
+    <button class="share-copy-btn" onclick="copyLink()">링크복사</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      showToast('🔗 링크 복사 완료!');
+    });
+  }
+</script>
+
+</body>
+</html>
